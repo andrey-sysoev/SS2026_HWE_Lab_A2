@@ -1,0 +1,9 @@
+Change Component Footprint: Designator=R2 Old Footprint=CF18JT330R-Footprint-2 New Footprint=STA_CF18_STP
+Change Component Footprint: Designator=R4 Old Footprint=CF18JT330R-Footprint-2 New Footprint=STA_CF18_STP
+Change Component Footprint: Designator=R6 Old Footprint=CF18JT330R-Footprint-2 New Footprint=STA_CF18_STP
+Added Pin To Net: NetName=NetC1_2 Pin=R2-1
+Added Pin To Net: NetName=NetJ1_1 Pin=R2-2
+Added Pin To Net: NetName=NetC2_2 Pin=R4-1
+Added Pin To Net: NetName=NetJ1_1 Pin=R4-2
+Added Pin To Net: NetName=NetC3_2 Pin=R6-1
+Added Pin To Net: NetName=NetJ1_1 Pin=R6-2
