@@ -6,7 +6,7 @@ end entity;
 
 architecture behavior of clock_divider is
 	signal clk_reg : bit := '0'; 
-	constant N     : integer := 6; -- use only positive even numbers N=2,4,6,8 etc...
+	constant N     : integer := 100000000; -- use only positive even numbers N=2,4,6,8 etc...
 	signal counter : integer range 0 to (N / 2) - 1 := 0; -- counter counts from 0 to (N/2)-1
 begin
 	Clock_Divider : process(CLK)
