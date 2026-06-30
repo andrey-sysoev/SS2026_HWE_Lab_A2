@@ -3,7 +3,7 @@
 -- The control unit is a finite state machine (FSM).
 -- It decides when the classifier should:
 --   1. load the switch inputs
---   2. compute the weighted sum
+--   2. compute the MAC score
 --   3. mark the result as done
 
 
@@ -89,7 +89,7 @@ begin
                     state <= MAC;
 
                 -- MAC lasts one clock cycle.
-                -- After computing the weighted sum, go to DONE_STATE.
+                -- After computing the MAC score, go to DONE_STATE.
                 when MAC =>
                     state <= DONE_STATE;
 

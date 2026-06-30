@@ -96,7 +96,7 @@ begin
             done        => done_int
         );
 
-    -- Classifier block stores the switch inputs, computes the weighted sum,
+    -- Classifier block stores the switch inputs, computes the MAC score,
     -- and creates the class result.
     CLASS1: classifier
         port map (

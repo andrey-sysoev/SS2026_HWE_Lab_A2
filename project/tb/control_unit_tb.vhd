@@ -15,7 +15,7 @@
 --   start = '1' in IDLE
 --       One classification cycle begins. The control unit must:
 --         1. load the switch inputs
---         2. compute the weighted sum
+--         2. compute the MAC score
 --         3. mark the result as done
 --         4. return to inactive outputs
 --
