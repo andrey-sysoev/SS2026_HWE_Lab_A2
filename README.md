@@ -6,7 +6,7 @@
 
 ## System Overview
 
-This project implements a small VHDL-based classifier system on a Nexys A7 FPGA board. The system receives four binary input features from the FPGA switches SW(3 downto 0). These inputs are used by a simple logistic regression style classifier. The classifier calculates a weighted sum using predefined fixed weights and a bias value. After that, a threshold activation is applied to decide whether the result belongs to class 0 or class 1.
+This project implements a small VHDL-based classifier system on a Nexys A7 FPGA board. The system receives four binary input features from the FPGA switches SW(3 downto 0). These inputs are used by a simple logistic regression style classifier. The classifier calculates a MAC score using predefined fixed weights and a bias value. After that, a threshold activation is applied to decide whether the result belongs to class 0 or class 1.
 
 The classification result is displayed using CLASS_LED. The calculated score is displayed on the seven-segment display using the SEG and AN outputs.
 
@@ -25,11 +25,11 @@ The system architecture consists of a control unit, a classifier and an output i
 
 [Architecture Diagram](https://raw.githubusercontent.com/andrey-sysoev/SS2026_HWE_Lab_A2/refs/heads/main/project/documentation/Diagrams/Architecture-Diagram.png)
 
-The control_unit controls the timing of the classification process. The classifier stores the switch inputs and calculates the weighted sum. The output_interface stores the final result and displays it on the FPGA board.
+The control_unit controls the timing of the classification process. The classifier stores the switch inputs and calculates the MAC score. The output_interface stores the final result and displays it on the FPGA board.
 
 ## Control Unit
 
-The control_unit module is implemented as a finite state machine. It controls when the input values are loaded, when the weighted sum is calculated and when the result is marked as ready.
+The control_unit module is implemented as a finite state machine. It controls when the input values are loaded, when the MAC score is calculated and when the result is marked as ready.
 
 The state sequence is:
 
@@ -37,7 +37,7 @@ IDLE → LOAD → MAC → DONE_STATE → IDLE
 
 In the IDLE state, the system waits for the START button. When START is active, the FSM moves to the LOAD state. In this state, the signal load_inputs is activated for one clock cycle. This tells the classifier to store the current switch values.
 
-After that, the FSM moves to the MAC state. In this state, the signal compute_mac is activated and the classifier calculates the weighted sum. Finally, the FSM enters the DONE_STATE, where the done signal is activated. This tells the output interface that the classification result is ready. After this state, the system returns to IDLE.
+After that, the FSM moves to the MAC state. In this state, the signal compute_mac is activated and the classifier calculates the MAC score. Finally, the FSM enters the DONE_STATE, where the done signal is activated. This tells the output interface that the classification result is ready. After this state, the system returns to IDLE.
 
 ## Classifier
 
@@ -50,7 +50,7 @@ SW(3) = x3
 
 The classifier uses fixed predefined weights and a fixed bias. These values are stored as constants in the VHDL code. Therefore, the FPGA only performs inference. It does not train the model or update the weights during runtime.
 
-The implemented calculation is:
+The score calculation is:
 
 $$
 z = W0*x0 + W1*x1 + W2*x2 + W3*x3 + B
@@ -64,12 +64,13 @@ In the current design, the example weights and bias are:
     W3 = -1
     B  = -4
 
-Since the input features are binary, each weight is only added to the sum if the corresponding switch input is active. After the score z is calculated, the activation unit applies a simple threshold:
+After the score z is calculated, the activation unit applies a threshold:
 
     if z >= 0, class_result = 1
     else,      class_result = 0
 
-This represents a small FPGA-based logistic regression inference system with fixed integer weights and bias.
+This represents a small FPGA-based logistic-regression-style classifier with
+fixed integer weights and bias.
 
 ## Output Interface
 
