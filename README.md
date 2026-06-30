@@ -53,7 +53,7 @@ The classifier uses fixed predefined weights and a fixed bias. These values are 
 The implemented calculation is:
 
 $$
-z = W0*x0 + W1*x1 + W2*x2 + W3*x3 + B
+z = W0 * x0 + W1 * x1 + W2 * x2 + W3 * x3 + B
 $$
 
 In the current design, the example weights and bias are:
