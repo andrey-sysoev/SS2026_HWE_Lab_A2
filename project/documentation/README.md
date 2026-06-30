@@ -16,6 +16,9 @@ The hardware system is divided into three main VHDL modules:
 
 The top_level module connects these internal modules to the external FPGA board inputs and outputs.
 
+## Requirements
+The requirements for this project are fairly straightforward. For hardware implementation, an FPGA such as the *Nexys A7 FPGA board* is required, for simulation and logic verification of the code *QuestaSim** or *ModelSim*, for synthesis and uploading the code to the FPGA board, tools such as *Xilinx Vivado*.
+
 ## System Block Diagram
 
 The system architecture consists of a control unit, a classifier and an output interface. The general data flow is shown below:
