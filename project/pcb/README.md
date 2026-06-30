@@ -1,7 +1,6 @@
 # HWE Lab A2 – FPGA PCB Project
-This repository contains the FPGA PCB design for the Hardware Engineering Lab A2 project.
-## PCB Design
 The PCB was designed using a Lattice iCE40HX1K-TQ144 FPGA.
+## PCB Design
 ![PCB 3D View](NPU_project/images/pcb_photo.png)
 
 ## Main Files
