@@ -19,11 +19,11 @@ The top_level module connects these internal modules to the external FPGA board 
 ## System Block Diagram
 
 The system architecture consists of a control unit, a classifier and an output interface. The general data flow is shown below:
-![Data Flow](images/example.png)
+![Data Flow](https://raw.githubusercontent.com/SamRB-dev/SS2065_HWE_Lab_A2/refs/heads/main/project/documentation/Diagrams/fpga_classifier_data_flow.png)
 
 #### Architecture Diagram
 
-![Architecture Diagram]()
+![Architecture Diagram](https://raw.githubusercontent.com/SamRB-dev/SS2065_HWE_Lab_A2/refs/heads/main/project/documentation/Diagrams/Architecture-Diagram.png)
 
 The control_unit controls the timing of the classification process. The classifier stores the switch inputs and calculates the weighted sum. The output_interface stores the final result and displays it on the FPGA board.
 
